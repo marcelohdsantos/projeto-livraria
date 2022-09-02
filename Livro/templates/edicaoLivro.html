@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Edição de Livro {% endblock %}
+
+{% block body%} <div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edição do Livro</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarLivro/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="numCodigo" name="numCodigo" value="{{livro.codigo}}" class="form-control" placeholder="Código"
+                               minlength="6" maxlength="6" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTitulo" name="txtTitulo" value="{{livro.titulo}}" class="form-control" placeholder="Título"
+                               maxlength="150" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nomeAutor" name="nomeAutor" value="{{livro.autor}}" class="form-control" placeholder="Autor"
+                               maxlength="150" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white"> Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
